@@ -4,8 +4,6 @@
 #-changed the random function to a better one
 #-allow input files - IMPLEMENTED IN THE ENCRYPTION BUT NOT DECRYPTION
 #-allow output files - NOT YET IMPLEMENTED
-#Backlog:
-#-break the program into encryption and decryption pieces
 
 from sys import argv;
 from hashlib import sha256;
