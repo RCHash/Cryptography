@@ -77,23 +77,33 @@ def binary2string(binary):
     return ''.join(chr(int(bit,2)) for bit in binary);
 
 #main function
-def main(basefile=None):
-    if basefile==None:
+def main(basefile=None,keyfile=None):
+    if basefile==None and keyfile==None:
         string=str(input("Please provide a string as an input: "));
         result=vernam_encrypt(string);
         print(result);
         print("This is the decrypted ciphertext: "+vernam_decrypt(result["ciphertext"],result["key"]));
-    else:
+    elif basefile==None or keyfile==None:
         #file input
-        with open(basefile, 'r') as afile:
-            #FIX THIS
-            buf='';
-            for block in afile:
-                tempbuf=block;
-                buf=buf+tempbuf;
+        if keyfile==None:
+            buf=getfileinfo(basefile);
+        if basefile==None:
+            buf=getfileinfo(keyfile);
         result=vernam_encrypt(buf);
         print(result);
         print("This is the decrypted ciphertext: "+vernam_decrypt(result["ciphertext"],result["key"]));
+    else:
+        buf=getfileinfo(basefile);
+        #DEVELOP THIS TO DECRYPT THE FILES INSTEAD OF QUITTING
+        quit();
+
+def getfileinfo(file):
+    with open(file, 'r') as afile:
+        buf='';
+        for block in afile:
+            tempbuf=block;
+            buf=buf+tempbuf;
+    return buf;
 
 #call main function
 if __name__ == '__main__':
@@ -102,9 +112,14 @@ if __name__ == '__main__':
         #TO BE IMPLEMENTED
         #vdecrypt=None;
         #vencrypt=None;
+        main();
     elif len(argv)==2:
         basefile=argv[1];
+        main(basefile);
+    elif len(argv)==3:
+        basefile=argv[1];
+        keyfile=argv[2];
+        main(basefile,keyfile);
     else:
         print("Use: either provide no arguments and enter a string after the prompt or provide a full path file argument for encryption.");
         quit();
-    main(basefile);
