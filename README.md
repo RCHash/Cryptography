@@ -17,3 +17,5 @@ In this case, you wouldn't need a communication channel with the recipient, as b
 "So what?", you could say. Well, if you want sensitive information of yours kept private even when an adversary gets his hands on your files, having them secured with this cipher and stored in different places would be a way to prevent the adversary from touching the sensitive information itself.
 
 This means that applying this cipher for the indended purpose also requires a clever file storage architecture that will foil the adversary's attack on the senstive information. Not only that, it also requires your thinking about having a way to retrieve the sensitive information file-piece yourself once it's been stolen for, remember, not even you can break the cipher without the key (and having just the key is also pointless).
+
+There are at least two side effects of this. One is that the cipher requires double the amount of space required to simply store the plaintext (for the key needs to be at least of the same size of the plaintext). Two is that despite the real world application, it may be complex to use for this indended purpose.
