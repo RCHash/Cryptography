@@ -91,12 +91,14 @@ def main(basefile=None,keyfile=None):
             buf=getfileinfo(keyfile);
         result=vernam_encrypt(buf);
         print(result);
-        print("This is the decrypted ciphertext: "+vernam_decrypt(result["ciphertext"],result["key"]));
     else:
-        buf=getfileinfo(basefile);
-        #DEVELOP THIS TO DECRYPT THE FILES INSTEAD OF QUITTING
-        quit();
+        #CHECK THIS
+        buf1=getfileinfo(basefile);
+        buf2=getfileinfo(basefile);
+        result=vernam_decrypt(buf1,buf2);
+        print(result);
 
+#CHECK THIS FUNCTION
 def getfileinfo(file):
     with open(file, 'r') as afile:
         buf='';
