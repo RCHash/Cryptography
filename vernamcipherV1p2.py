@@ -110,3 +110,5 @@ if __name__ == '__main__':
         print("Use: either provide no arguments and enter a string after the prompt or provide a full path file argument for encryption.");
         quit();
     main(basefile);
+
+#test update
