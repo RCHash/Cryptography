@@ -2,7 +2,7 @@
 #-allow users to input a string
 #-investigate the hash function
 #-changed the random function to a better one
-#-allow input files - PENDING VERIFICATION (ONE FILE CHECKED OK)
+#-allow input files - PENDING VERIFICATION (SINGLE FILE CHECKED OK)
 #-allow output files - NOT YET IMPLEMENTED
 
 from sys import argv;
@@ -12,7 +12,7 @@ from os import urandom;
 #defines a blocksize (in bytes) so that large files can be read safely
 BLOCKSIZE=65536;
 
-def vernam_encrypt(plaintext):
+def vernam_encrypt(plaintext,basefileoutputname=None,keyfileoutputname=None):
     #updated in version 1
     #convert the plaintext to binary
     binplaintext=string2binary(plaintext);
@@ -42,7 +42,7 @@ def vernam_encrypt(plaintext):
     return {"ciphertext":ciphertext, "key":key};
 
 #FIX THIS
-def vernam_decrypt(ciphertext,key):
+def vernam_decrypt(ciphertext,key,plaintextfileoutputname=None):
     #updated in version 1
     #convert the ciphertext to binary
     binciphertext=string2binary(ciphertext);
@@ -96,13 +96,17 @@ def main(basefile=None,keyfile=None):
         result=vernam_decrypt(buf1,buf2);
         print(result);
 
-#CHECK THIS FUNCTION
+#returns the information from within the file
 def getfileinfo(file):
+    #opens the file
     with open(file, 'r') as afile:
+        #sets the base string
         buf='';
+        #for each block in the file, add the content to the string
         for block in afile:
             tempbuf=block;
             buf=buf+tempbuf;
+    #returns the content of the file
     return buf;
 
 #call main function
