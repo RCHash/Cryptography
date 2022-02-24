@@ -123,5 +123,5 @@ if __name__ == '__main__':
         keyfile=argv[2];
         main(basefile,keyfile);
     else:
-        print("Use: either provide no arguments and enter a string after the prompt or provide a full path file argument for encryption.");
+        print("Use: either provide no arguments and enter a string after the prompt or provide a full path file argument for encryption. The user may provide either one or two files. In the first case, the file is considered the plaintext. In the second case, one file is considered the ciphertext and the second, the key.");
         quit();
