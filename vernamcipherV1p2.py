@@ -2,7 +2,7 @@
 #-allow users to input a string
 #-investigate the hash function
 #-changed the random function to a better one
-#-allow input files - PENDING VERIFICATION
+#-allow input files - PENDING VERIFICATION (ONE FILE CHECKED OK)
 #-allow output files - NOT YET IMPLEMENTED
 
 from sys import argv;
