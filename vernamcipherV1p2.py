@@ -34,10 +34,8 @@ def vernam_encrypt(plaintext):
         binkey.append(binkeytemp[i]);
     #XOR it with the key
     binciphertext=xorbinaries(binkey,binplaintext);
-    print("vernam_encrypt: This is the binary ciphertext: "+str(binciphertext));
     #convert the ciphertext back to a string
     ciphertext=binary2string(binciphertext);
-    print("vernam_encrypt: This is the ciphertext: "+ciphertext);
     #convert the final key to string
     key=binary2string(binkey);
     #output ciphertext and key
