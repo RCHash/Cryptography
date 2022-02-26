@@ -99,15 +99,19 @@ def main(basefile=None,keyfile=None):
 #returns the information from within the file
 def getfileinfo(file):
     #opens the file
-    with open(file, 'r') as afile:
-        #sets the base string
-        buf='';
-        #for each block in the file, add the content to the string
-        for block in afile:
-            tempbuf=block;
-            buf=buf+tempbuf;
-    #returns the content of the file
-    return buf;
+    try:
+        with open(file, 'r') as afile:
+            #sets the base string
+            buf='';
+            #for each block in the file, add the content to the string
+            for block in afile:
+                tempbuf=block;
+                buf=buf+tempbuf;
+        #returns the content of the file
+        return buf;
+    except IOError:
+        print(f"Unable to open "+file+"\nProgram terminated.");
+        quit();
 
 #call main function
 if __name__ == '__main__':
