@@ -107,11 +107,14 @@ def getfileinfo(file):
             for block in afile:
                 tempbuf=block;
                 buf=buf+tempbuf;
-        #returns the content of the file
-        return buf;
+    #if there is an IO Error (something wrong with the file)
     except IOError:
         print(f"Unable to open "+file+"\nProgram terminated.");
         quit();
+    #if all is fine with the file
+    else:
+        #returns the content of the file
+        return buf;
 
 #call main function
 if __name__ == '__main__':
