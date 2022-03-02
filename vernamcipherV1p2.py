@@ -8,6 +8,7 @@
 from sys import argv;
 from hashlib import sha256;
 from os import urandom;
+from os.path import exists;
 
 #defines a blocksize (in bytes) so that large files can be read safely
 BLOCKSIZE=65536;
@@ -86,6 +87,10 @@ def binary2string(binary):
 #returns the information from within the file
 def getfileinfo(file):
     """Takes a file path as an input. Returns its content as a string."""
+    #checks whether the file exists
+    if not exists(file):
+        print(file+" file does not exist.");
+        quit();
     #opens the file
     try:
         with open(file, 'r') as afile:
@@ -105,11 +110,28 @@ def getfileinfo(file):
         return buf;
 
 #writes information in a new file
-def writefileinfo(info,originalfile):
+def writefileinfo(info,originalfile,type):
     """Creates a new file with the information given in it. Makes sure not to overwrite a previously existing file.
     -Takes information to be written in a new file as a string.
+    -Takes the original file path and name as a string.
+    -Takes the type of file to be written ('p' for plaintext, 'c' for ciphertext and 'k' for key).
     -Returns True if successful.
     -Returns False otherwise."""
+    #for the ciphertext case
+    if type=='c':
+        #increments the original file name
+        originalfile=originalfile.join('-C');
+        #while there is a file with the incremented name, cycle through the possibilities
+        i=1;
+        while exists(originalfile.join(i)):
+            #increments i
+            i+=1;
+    else:
+        #notifies of wrong argument value
+        print("Invalid file type argument for the writefileinfo function.");
+        quit();
+    #opens a new file to write on it
+
 
 #main function
 def main(basefile=None,keyfile=None):
