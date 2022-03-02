@@ -21,7 +21,7 @@ def vernam_encrypt(plaintext,basefileoutputname=None,keyfileoutputname=None):
     #creates a key big enough to encompass the whole plaintext
     binkeytemp=[];
     while len(binkeytemp)<len(binplaintext):
-        #generate a random key and hash it - FIX THIS
+        #generate a random key and hash it
         #sha256 is a pseudorandom function that requires a string formated to utf-8 and outputs ???
         #encode is a method that allows encoding in specific formats, such as utf-8
         #hexdigest is a method that returns the data converted to hexadecimal
@@ -103,6 +103,13 @@ def getfileinfo(file):
     else:
         #returns the content of the file
         return buf;
+
+#writes information in a new file
+def writefileinfo(info,originalfile):
+    """Creates a new file with the information given in it. Makes sure not to overwrite a previously existing file.
+    -Takes information to be written in a new file as a string.
+    -Returns True if successful.
+    -Returns False otherwise."""
 
 #main function
 def main(basefile=None,keyfile=None):
