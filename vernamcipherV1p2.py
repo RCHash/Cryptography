@@ -120,12 +120,24 @@ def writefileinfo(info,originalfile,type):
     #for the ciphertext case
     if type=='c':
         #increments the original file name
-        originalfile=originalfile.join('-C');
+        file=originalfile.join('-C');
         #while there is a file with the incremented name, cycle through the possibilities
         i=1;
-        while exists(originalfile.join(i)):
+        while exists(file.join(i)):
             #increments i
             i+=1;
+        try:
+            with open(file, 'w') as afile:
+                #write the information within the file - TO DO
+                print("TO DO");
+        #if there is an IO Error (something wrong with the file)
+        except IOError:
+            print("Unable to open "+file);
+            return False;
+        #if all is fine with the file
+        else:
+            #returns the content of the file
+            return True;
     else:
         #notifies of wrong argument value
         print("Invalid file type argument for the writefileinfo function.");
