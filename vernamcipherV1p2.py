@@ -3,7 +3,7 @@
 #-investigate the hash function
 #-changed the random function to a better one
 #-allow input files - PENDING VERIFICATION (SINGLE FILE CHECKED OK)
-#-allow output files - NOT YET IMPLEMENTED
+#-allow output files - PENDING VERIFICATION
 
 from sys import argv;
 from hashlib import sha256;
@@ -109,7 +109,7 @@ def getfileinfo(file):
         #returns the content of the file
         return buf;
 
-#writes on a new file - FIX THE WRITTING PART WITHIN THE "WITH"
+#writes on a new file
 def writeinfile(info,filename):
     """Creates a file with the information given in it. It assumes that there is no file with the same name in the same path.
     -Takes the information to be written as a string.
@@ -118,7 +118,7 @@ def writeinfile(info,filename):
     try:
         with open(filename, 'w') as afile:
             #write the information within the file - TO DO
-            print("TO DO");
+            afile.write(info);
     #if there is an IO Error (something wrong with the file)
     except IOError:
         #error message
