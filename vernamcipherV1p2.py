@@ -109,41 +109,61 @@ def getfileinfo(file):
         #returns the content of the file
         return buf;
 
+#writes on a new file - FIX THE WRITTING PART WITHIN THE "WITH"
+def writeinfile(info,filename):
+    """Creates a file with the information given in it. It assumes that there is no file with the same name in the same path.
+    -Takes the information to be written as a string.
+    -Takes the file path and name as a string
+    -Returns True if successful and False otherwise."""
+    try:
+        with open(filename, 'w') as afile:
+            #write the information within the file - TO DO
+            print("TO DO");
+    #if there is an IO Error (something wrong with the file)
+    except IOError:
+        #error message
+        print("Unable to open "+filename);
+        #returns failure
+        return False;
+    #if all is fine with the file
+    else:
+        #writes within the file
+        afile.write(info);
+        #returns success
+        return True;
+
 #writes information in a new file
-def writefileinfo(info,originalfile,type):
+def writefileinfo(info,originalfile,ftype):
     """Creates a new file with the information given in it. Makes sure not to overwrite a previously existing file.
     -Takes information to be written in a new file as a string.
     -Takes the original file path and name as a string.
     -Takes the type of file to be written ('p' for plaintext, 'c' for ciphertext and 'k' for key).
     -Returns True if successful.
     -Returns False otherwise."""
-    #for the ciphertext case
-    if type=='c':
+    #for valid file types
+    if ftype=='c' or ftype=='p' or ftype=='k':
         #increments the original file name
-        file=originalfile.join('-C');
+        file=originalfile.join(ftype);
         #while there is a file with the incremented name, cycle through the possibilities
         i=1;
         while exists(file.join(i)):
             #increments i
             i+=1;
-        try:
-            with open(file, 'w') as afile:
-                #write the information within the file - TO DO
-                print("TO DO");
-        #if there is an IO Error (something wrong with the file)
-        except IOError:
-            print("Unable to open "+file);
-            return False;
-        #if all is fine with the file
-        else:
-            #returns the content of the file
+        #writes within the file
+        if writeinfile(info,file):
+            #returns success
             return True;
+        else:
+            #failure message
+            print("Cannot write within "+file);
+            #returns failure
+            return False;
+    #if the wrong file type argument is entered
     else:
         #notifies of wrong argument value
         print("Invalid file type argument for the writefileinfo function.");
-        quit();
-    #opens a new file to write on it
-
+        #returns failure
+        return False;
 
 #main function
 def main(basefile=None,keyfile=None):
