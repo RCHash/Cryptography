@@ -13,7 +13,7 @@ from os.path import exists;
 #defines a blocksize (in bytes) so that large files can be read safely
 BLOCKSIZE=65536;
 
-def vernam_encrypt(plaintext,basefile=None,keyfile=None):
+def vernam_encrypt(plaintext):
     """ Converts a plaintext to a ciphertext, adding a random key of the same size.
     -Takes a string as an input
     -Returns a dictionary with two keys: ciphertext and key"""
