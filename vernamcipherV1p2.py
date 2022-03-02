@@ -132,9 +132,6 @@ def main(basefile=None,keyfile=None):
 if __name__ == '__main__':
     if len(argv)==1:
         basefile=None;
-        #TO BE IMPLEMENTED
-        #vdecrypt=None;
-        #vencrypt=None;
         main();
     elif len(argv)==2:
         basefile=argv[1];
