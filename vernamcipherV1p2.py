@@ -13,8 +13,10 @@ from os import urandom;
 BLOCKSIZE=65536;
 
 def vernam_encrypt(plaintext,basefileoutputname=None,keyfileoutputname=None):
-    #updated in version 1
-    #convert the plaintext to binary
+    """ Converts a plaintext to a ciphertext, adding a random key of the same size.
+    -Takes a string as an input
+    -Returns a dictionary with two keys: ciphertext and key"""
+    #converts a string into a binary
     binplaintext=string2binary(plaintext);
     #creates a key big enough to encompass the whole plaintext
     binkeytemp=[];
@@ -43,7 +45,9 @@ def vernam_encrypt(plaintext,basefileoutputname=None,keyfileoutputname=None):
 
 #FIX THIS
 def vernam_decrypt(ciphertext,key,plaintextfileoutputname=None):
-    #updated in version 1
+    """ Converts a ciphertext and its key into the original plainetxt.
+    -Takes two strings of the same size as input
+    -Returns a plaintext string"""
     #convert the ciphertext to binary
     binciphertext=string2binary(ciphertext);
     #convert the key to binary
@@ -57,6 +61,8 @@ def vernam_decrypt(ciphertext,key,plaintextfileoutputname=None):
 
 #converts a string into a binary of 8 bits
 def string2binary(string):
+    """Takes a String as input.
+    Returns a list of 8-bit binaries of the ASCII value for each letter in the string."""
     #returns a list of binaries of the ASCII value for each letter in the string
     #this also removes the first two elements of each letter which are just '0b', which indicates that it's a binary
     #the zfill method includes zeroes in excess to the length of the element to reach a final size
@@ -65,39 +71,21 @@ def string2binary(string):
 
 #XOR binaries
 def xorbinaries(binary1,binary2):
+    """Takes two binaries of the same size as input.
+    Returns their XOR-ed binary."""
     #XOR it with the key
     return [bin(int(binary1[bit],2)^int(binary2[bit],2))[2:].zfill(8) for bit in range(0,min(len(binary1),len(binary2)),1)];
 
 #converts binaries to strings
 def binary2string(binary):
+    """Takes a binary as input. Returns its equivalent binary."""
     #the chr function transforms an int into its correspondent ASCII character
     #the int function transforms a number form a base into an int in base 10 (in the case of binaries, base 2)
     return ''.join(chr(int(bit,2)) for bit in binary);
 
-#main function
-def main(basefile=None,keyfile=None):
-    if basefile==None and keyfile==None:
-        string=str(input("Please provide a string as an input: "));
-        result=vernam_encrypt(string);
-        print(result);
-        print("This is the decrypted ciphertext: "+vernam_decrypt(result["ciphertext"],result["key"]));
-    elif basefile==None or keyfile==None:
-        #file input
-        if keyfile==None:
-            buf=getfileinfo(basefile);
-        if basefile==None:
-            buf=getfileinfo(keyfile);
-        result=vernam_encrypt(buf);
-        print(result);
-    else:
-        #CHECK THIS
-        buf1=getfileinfo(basefile);
-        buf2=getfileinfo(basefile);
-        result=vernam_decrypt(buf1,buf2);
-        print(result);
-
 #returns the information from within the file
 def getfileinfo(file):
+    """Takes a file path as an input. Returns its content as a string."""
     #opens the file
     try:
         with open(file, 'r') as afile:
@@ -115,6 +103,30 @@ def getfileinfo(file):
     else:
         #returns the content of the file
         return buf;
+
+#main function
+def main(basefile=None,keyfile=None):
+    if basefile==None and keyfile==None:
+        string=str(input("Please provide a string as an input: "));
+        result=vernam_encrypt(string);
+        print(result);
+        print("This is the decrypted ciphertext: "+vernam_decrypt(result["ciphertext"],result["key"]));
+    elif basefile==None or keyfile==None:
+        #file input
+        if keyfile==None:
+            buf=getfileinfo(basefile);
+        if basefile==None:
+            buf=getfileinfo(keyfile);
+        #encrypts the file's information
+        result=vernam_encrypt(buf);
+        print(result);
+    else:
+        #CHECK THIS
+        buf1=getfileinfo(basefile);
+        buf2=getfileinfo(basefile);
+        #decrypts the files' information
+        result=vernam_decrypt(buf1,buf2);
+        print(result);
 
 #call main function
 if __name__ == '__main__':
