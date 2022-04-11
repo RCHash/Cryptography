@@ -6,8 +6,6 @@
 #-allow output files - PENDING VERIFICATION
 
 from sys import argv;
-from hashlib import sha256;
-from os import urandom;
 from os.path import exists;
 from XORsupport import string2binary, xorbinaries, binary2string
 from filemanipulation import getfileinfo, writeinfile, writefileinfo
