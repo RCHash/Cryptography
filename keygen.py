@@ -9,7 +9,7 @@ def keygen(kLength,BLOCKSIZE):
     Returns a key as a String"""
     #initializes the key
     key="";
-    while len(str(key))<kLength:
+    while len(key)<kLength:
         #generates a random key and hashes it
         #sha256 is a pseudorandom function that requires a string formated to utf-8 and outputs ???
         #encode is a method that allows encoding in specific formats, such as utf-8
