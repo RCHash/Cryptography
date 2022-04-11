@@ -12,7 +12,7 @@ def vernam_encrypt(plaintext):
     #converts a string into a binary
     binplaintext=string2binary(plaintext);
     #get a rough key
-    roughbinkey=string2binary(len(plaintext),BLOCKSIZE);
+    roughbinkey=string2binary(keygen(len(plaintext),BLOCKSIZE));
     #truncate the key to have the same length as the plaintext
     binkey=[];
     for i in range(0,len(binplaintext),1):
