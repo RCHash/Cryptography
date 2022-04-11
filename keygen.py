@@ -2,13 +2,12 @@ from os import urandom;
 from hashlib import sha256;
 
 #generates a pseudorandom key of length kLength
-def keygen(kLength):
+def keygen(kLength,BLOCKSIZE):
     """Generates a pseudorandom key of length kLength
     Uses a nonce to increase the output of the key to the required length
     -Assumes kLength is an integer>0
     Returns a key as a String"""
-    #get the code from own github account
-    binkeytemp=[];
+    #initializes the key
     key="";
     while len(str(key))<kLength:
         #generates a random key and hashes it
