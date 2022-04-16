@@ -1,14 +1,17 @@
 from os import urandom;
 from hashlib import sha256;
 
-#generates a pseudorandom key of length kLength
-def keygen(kLength,BLOCKSIZE):
+#generates a pseudorandom key of length kLength with an optional seed
+def keygen(kLength,BLOCKSIZE, seed=""):
     """Generates a pseudorandom key of length kLength
     Uses a nonce to increase the output of the key to the required length
     -Assumes kLength is an integer>0
+    -Assumes BLOCKSIZE is an integer>0
     Returns a key as a String"""
     #initializes the key
     key="";
+    #initializes the nonce
+    nonce=0;
     while len(key)<kLength:
         #generates a random key and hashes it
         #sha256 is a pseudorandom function that requires a string formated to utf-8 and outputs ???
@@ -19,3 +22,6 @@ def keygen(kLength,BLOCKSIZE):
     #truncate the key to have the desired length
     fkey=''.join(key[k] for k in range(kLength));
     return fkey;
+
+BLOCKSIZE=65536
+print(keygen(10,BLOCKSIZE));
