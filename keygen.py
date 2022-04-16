@@ -23,7 +23,7 @@ def keygen(kLength,BLOCKSIZE, seed="", randomness=True):
         if (randomness==True):
             randomdata=str(urandom(BLOCKSIZE)).encode('utf-8');
         else:
-            randomdata="";
+            randomdata="".encode('utf-8');
         rawdata=randomdata+(str(seed)+str(nonce)).encode('utf-8');
         hashfunction=sha256(rawdata);
         key=hashfunction.hexdigest()[2:];
