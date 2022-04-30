@@ -13,9 +13,11 @@ def RotDecrypt(ciphertext,wordListFileName):
         #cycle through the ciphertext and create a shifted text
         shiftedText="";
         for element in ciphertext:
-            raise NotImplementedError; #MISSING DIFFERENT CHARACTER HANDLER
             #move it to the right by i characters
-            shiftedText.join(letterShifter(element,i));
+            if (ord(element)>=97 and ord(element<=122) or (ord(element)>=65 and ord(element)<=90)):
+                shiftedText.join(letterShifter(element,i));
+            else:
+                shiftedText.join(element);
         #separate it in words
         shiftedList=wordSeparator(shiftedText);
         #compare it to a dictionary for matches
@@ -30,7 +32,7 @@ def RotDecrypt(ciphertext,wordListFileName):
     else:
         return None;
 
-def wordSeparator(text):
+def wordSeparator(text): #MISSING IMPLEMENTATION
     """
     Assumes text is a string
     Separates the text into words
