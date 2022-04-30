@@ -106,3 +106,5 @@ def letterShifter(letter,shift):
     else:
         newLetter=chr(order);
     return newLetter;
+
+testString="Glcr gur jbeq 'frphevgl' orybj sbe n serr cbvag."
