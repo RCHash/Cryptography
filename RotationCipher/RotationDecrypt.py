@@ -12,6 +12,7 @@ def RotDecrypt(ciphertext,wordListFileName):
     for i in range (26):
         #cycle through the ciphertext
         for element in ciphertext:
+            raise NotImplementedError;
             #move it to the right by i characters
             #MISSING
             #separate it in words
