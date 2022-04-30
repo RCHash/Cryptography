@@ -9,13 +9,14 @@ def RotDecrypt(ciphertext,wordListFileName):
     #cycle through the letters of the alphabet
     bestMatch=0;
     plaintext="";
-    for i in range (26):
+    bestMatchShift=0;
+    for shift in range (26):
         #cycle through the ciphertext and create a shifted text
         shiftedText="";
         for element in ciphertext:
             #move it to the right by i characters
             if (ord(element)>=97 and ord(element<=122) or (ord(element)>=65 and ord(element)<=90)):
-                shiftedText.join(letterShifter(element,i));
+                shiftedText.join(letterShifter(element,shift));
             else:
                 shiftedText.join(element);
         #separate it in words
@@ -27,8 +28,9 @@ def RotDecrypt(ciphertext,wordListFileName):
         if counter>bestMatch:
             bestMatch=counter;
             plaintext=shiftedText;
+            bestMatchShift=shift;
     if bestMatch>0:
-        return plaintext;
+        return (plaintext,bestMatchShift);
     else:
         return None;
 
