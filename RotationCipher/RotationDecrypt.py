@@ -16,15 +16,15 @@ def RotDecrypt(ciphertext,wordListFileName):
         for element in ciphertext:
             #move it to the right by i characters
             if (ord(element)>=97 and ord(element)<=122) or (ord(element)>=65 and ord(element)<=90):
-                shiftedText.join(letterShifter(element,shift));
+                shiftedText=shiftedText+letterShifter(element,shift);
             else:
-                shiftedText.join(element);
+                shiftedText=shiftedText+element;
         #separate it in words
         shiftedList=wordSeparator(shiftedText);
         #compare it to a dictionary for matches
         counter=0;
         for word in shiftedList:
-            if isValidWord(word):
+            if isValidWord(word,wordList):
                 counter=counter+1;
         if counter>bestMatch:
             bestMatch=counter;
@@ -61,8 +61,7 @@ def wordSeparator(text): #MISSING IMPLEMENTATION
     word="";
     for i in range(0,len(text),1):
         if booleanDigitList[i]:
-            word.join(text[i]);
-            # print(text[i]);
+            word=word+text[i];
         elif booleanDigitList[i] and i==len(text)-1:
             if len(word)>0:
                 words.append(word);
@@ -132,8 +131,7 @@ def letterShifter(letter,shift):
         newLetter=chr(order);
     return newLetter;
 
+#test code
 wordListFileName="englishWords.txt";
 testString="Glcr gur jbeq 'frphevgl' orybj sbe n serr cbvag."
-print(wordSeparator(testString));
-# loadWords(wordListFileName);
-# print(RotDecrypt(testString,wordListFileName));
+print(RotDecrypt(testString,wordListFileName));
