@@ -15,13 +15,14 @@ def RotDecrypt(ciphertext,wordListFileName):
         shiftedText="";
         for element in ciphertext:
             #move it to the right by i characters
-            if (ord(element)>=97 and ord(element<=122) or (ord(element)>=65 and ord(element)<=90)):
+            if (ord(element)>=97 and ord(element)<=122) or (ord(element)>=65 and ord(element)<=90):
                 shiftedText.join(letterShifter(element,shift));
             else:
                 shiftedText.join(element);
         #separate it in words
         shiftedList=wordSeparator(shiftedText);
         #compare it to a dictionary for matches
+        counter=0;
         for word in shiftedList:
             if isValidWord(word):
                 counter=counter+1;
@@ -52,12 +53,24 @@ def wordSeparator(text): #MISSING IMPLEMENTATION
     booleanDigitList=[];
     for letter in range(0,len(text),1):
         #mark them whether they're actual letters
-        if (letter in alphaLetters):
+        if (text[letter] in alphaLetters):
             booleanDigitList.append(True);
         else:
             booleanDigitList.append(False);
     #compose words with the boolean list
-    raise NotImplementedError;
+    word="";
+    for i in range(0,len(text),1):
+        if booleanDigitList[i]:
+            word.join(text[i]);
+            # print(text[i]);
+        elif booleanDigitList[i] and i==len(text)-1:
+            if len(word)>0:
+                words.append(word);
+        else:
+            if len(word)>0:
+                words.append(word);
+            word="";
+    return words;
 
 def loadWords(wordListFileName):
     """
@@ -121,4 +134,6 @@ def letterShifter(letter,shift):
 
 wordListFileName="englishWords.txt";
 testString="Glcr gur jbeq 'frphevgl' orybj sbe n serr cbvag."
-loadWords(wordListFileName);
+print(wordSeparator(testString));
+# loadWords(wordListFileName);
+# print(RotDecrypt(testString,wordListFileName));
