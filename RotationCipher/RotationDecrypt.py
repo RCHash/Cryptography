@@ -133,5 +133,5 @@ def letterShifter(letter,shift):
 
 #test code
 wordListFileName="englishWords.txt";
-testString="Glcr gur jbeq 'frphevgl' orybj sbe n serr cbvag."
+testString="Frphevgl vf abg n fgebat srngher bs guvf zrffntr, vf vg?"
 print(RotDecrypt(testString,wordListFileName));
