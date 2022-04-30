@@ -43,12 +43,21 @@ def wordSeparator(text): #MISSING IMPLEMENTATION
     """
     #initializes the words list
     words=[];
+    #initializes the list of alphabetical letters
+    alphaLetters=[];
+    for i in range(0,26,1):
+        alphaLetters.append(chr(97+i));
+        alphaLetters.append(chr(65+i));
     #cycles through the letters
+    booleanDigitList=[];
     for letter in range(0,len(text),1):
-        if (letter>0):
-            raise NotImplementedError; #MISSING
-        #SEEK A BETTER WAY TO COMPARE
-        #if (text[letter]==" " or text[letter]==" ")
+        #mark them whether they're actual letters
+        if (letter in alphaLetters):
+            booleanDigitList.append(True);
+        else:
+            booleanDigitList.append(False);
+    #compose words with the boolean list
+    raise NotImplementedError;
 
 def loadWords(wordListFileName):
     """
