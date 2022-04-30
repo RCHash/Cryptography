@@ -21,8 +21,8 @@ def RotDecrypt(ciphertext,wordListFileName):
             if isValidWord(word):
                 counter=counter+1;
         if counter>bestMatch:
-            bestMatch=currentMatch;
-            plaintext=decryptedText;
+            bestMatch=counter;
+            plaintext=shiftedText;
     if bestMatch>0:
         return plaintext;
     else:
