@@ -52,7 +52,8 @@ def wordSeparator(text): #MISSING IMPLEMENTATION
 
 def loadWords(wordListFileName):
     """
-    Assumes wordlist filename is a valid textfile with one word in each row
+    Assumes wordlist filename is a valid textfile with all words in the
+     same row, each separated by a single space
     Converts the words in the file into a list of words
     Returns the list of words
     Depending on the word list size, this may take a while to complete
