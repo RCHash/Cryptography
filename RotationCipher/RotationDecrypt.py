@@ -42,7 +42,7 @@ def wordSeparator(text):
     #cycles through the letters
     for letter in range(0,len(text),1):
         if (letter>0):
-            raise NotImplementedError;
+            raise NotImplementedError; #MISSING
         #SEEK A BETTER WAY TO COMPARE
         #if (text[letter]==" " or text[letter]==" ")
 
@@ -80,13 +80,33 @@ def isValidWord(word, wordList):
 
 def letterShifter(letter,shift):
     """
-    Assumes letter is a single alphabetic digit
+    Assumes letter is a single alphabetic digit in unicode
+    Assumes is an integer and 0<=shift<=26
     Shifts the letter by shift positions
     Returns the new letter
     """
+    #figures whether the letter is upper or lower case
+    if letter.upper()==letter:
+        caps=True;
+    else:
+        caps=False;
+    #returns the unicode number equivalent to the lower-cased letter
+    order=ord(letter.lower());
+    if (order+shift<=122):
+        order=order+shift;
+    else:
+        order=97+shift-(122-order);
+    #adjusts the case
+    if caps:
+        newLetter=chr(order).upper();
+    else:
+        newLetter=chr(order);
     return newLetter;
 
 #testcode
 letter="a";
-letter=letter+1;
+order=ord(letter);
+print(order);
+newLetter=chr(ord(letter) + 1);
 print(letter);
+print(newLetter);
