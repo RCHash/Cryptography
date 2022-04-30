@@ -57,7 +57,7 @@ def loadWords(wordListFileName):
     Returns the list of words
     Depending on the word list size, this may take a while to complete
     """
-    print("Loading word list from file")
+    print("Loading word list from file...")
     # inFile: file
     inFile = open(wordListFileName, 'r');
     # wordList: list of strings
