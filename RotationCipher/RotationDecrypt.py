@@ -95,18 +95,10 @@ def letterShifter(letter,shift):
     if (order+shift<=122):
         order=order+shift;
     else:
-        order=97+shift-(122-order);
+        order=96+shift-(122-order);
     #adjusts the case
     if caps:
         newLetter=chr(order).upper();
     else:
         newLetter=chr(order);
     return newLetter;
-
-#testcode
-letter="a";
-order=ord(letter);
-print(order);
-newLetter=chr(ord(letter) + 1);
-print(letter);
-print(newLetter);
