@@ -75,3 +75,12 @@ def isValidWord(word, wordList):
         return True;
     else:
         return False;
+
+def letterShifter(letter,shift):
+    """
+    Assumes letter is a single alphabetic digit
+    Shifts the letter by shift positions
+    Returns the new letter
+    """
+    return newLetter;
+
