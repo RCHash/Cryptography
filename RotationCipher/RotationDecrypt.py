@@ -25,8 +25,19 @@ def RotDecrypt(ciphertext):
         return None;
 
 def wordSeparator(text):
-
-    for element in text:
+    """
+    Assumes text is a string
+    Separates the text into words
+    Does not care whether the word is actually a word
+    Returns a list of the words contained in text
+    """
+    #initializes the words list
+    words=[];
+    #cycles through the letters
+    for letter in range(0,len(text),1):
+        if (letter>0):
+        #SEEK A BETTER WAY TO COMPARE
+        if (letter==" " or letter==" ")
 
 
 #testcode
