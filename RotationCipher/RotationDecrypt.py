@@ -10,10 +10,12 @@ def RotDecrypt(ciphertext,wordListFileName):
     bestMatch=0;
     plaintext="";
     for i in range (26):
-        #cycle through the ciphertext
+        #cycle through the ciphertext and create a shifted text
+        shiftedText="";
         for element in ciphertext:
+            raise NotImplementedError; #MISSING DIFFERENT CHARACTER HANDLER
             #move it to the right by i characters
-            raise NotImplementedError; #MISSING
+            shiftedText.join(letterShifter(element,i));
         #separate it in words
         shiftedList=wordSeparator(shiftedText);
         #compare it to a dictionary for matches
@@ -84,3 +86,7 @@ def letterShifter(letter,shift):
     """
     return newLetter;
 
+#testcode
+letter="a";
+letter=letter+1;
+print(letter);
