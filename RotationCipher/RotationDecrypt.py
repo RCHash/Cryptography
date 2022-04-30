@@ -12,16 +12,17 @@ def RotDecrypt(ciphertext,wordListFileName):
     for i in range (26):
         #cycle through the ciphertext
         for element in ciphertext:
-            raise NotImplementedError;
             #move it to the right by i characters
-            #MISSING
-            #separate it in words
-            #MISSING
-            #compare it to a dictionary for matches
-            #MISSING
-            if curretMatches>bestMatch:
-                bestMatch=currentMatch;
-                plaintext=decryptedText;
+            raise NotImplementedError; #MISSING
+        #separate it in words
+        shiftedList=wordSeparator(shiftedText);
+        #compare it to a dictionary for matches
+        for word in shiftedList:
+            if isValidWord(word):
+                counter=counter+1;
+        if counter>bestMatch:
+            bestMatch=currentMatch;
+            plaintext=decryptedText;
     if bestMatch>0:
         return plaintext;
     else:
@@ -60,3 +61,17 @@ def loadWords(wordListFileName):
     inFile.close();
     print("  ", len(wordList), "words loaded.");
     return wordList;
+
+def isValidWord(word, wordList):
+    """
+    Assumes word is a string
+    Assumes wordList is a list of strings
+    Returns True if word is in the wordList; otherwise, returns False
+    Does not mutate hand or wordList
+    """
+    #checks whether the word is in wordlist
+    if word in wordList:
+        #if not, return false
+        return True;
+    else:
+        return False;
