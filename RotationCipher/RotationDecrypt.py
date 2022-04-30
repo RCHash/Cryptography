@@ -62,8 +62,10 @@ def loadWords(wordListFileName):
     inFile = open(wordListFileName, 'r');
     # wordList: list of strings
     wordList = [];
-    for line in inFile:
-        wordList.append(line.strip().lower());
+    # line: string
+    line = inFile.readline();
+    # wordlist: list of strings
+    wordList = line.split();
     inFile.close();
     print("  ", len(wordList), "words loaded.");
     return wordList;
@@ -107,4 +109,6 @@ def letterShifter(letter,shift):
         newLetter=chr(order);
     return newLetter;
 
+wordListFileName="englishWords.txt";
 testString="Glcr gur jbeq 'frphevgl' orybj sbe n serr cbvag."
+loadWords(wordListFileName);
