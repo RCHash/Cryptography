@@ -3,25 +3,39 @@
 #Digital signatures: sign messages (using the private key) and verify message signature (using the public key).
 #Key exchange: It securely transports a secret key used for encrypted communication.
 
-import random;
-import math;
+#procedure for key generation
+#1-Choose two different large random prime numbers p and q
+#2-Calculate n = p*q
+#3-n is the modulus for the public key and the private keys
+#4-Calculate  ϕ ( n ) = ( p − 1 )*( q − 1 )
+#5-Choose an integer k such that 1 < k  < ϕ ( n ) and k is co-prime to ϕ ( n ) : k and ϕ ( n )  share no factors other than 1; gcd (k, ϕ ( n ))= 1.
+#6-k is released as the public key exponent
+#7-Compute d  to satisfy the  d k ≡ 1 ( mod ϕ ( n ) )  i.e.: d k = 1 + x ϕ ( n ) for some integer x
+#8-d is kept as the private key exponent
+
+import gcd;
 
 message="secret message";
 m="";
 for character in message:
     m=m+str(ord(character));
-m=int(m);
-print(m);
-p=random.randint(100,1000);
-q=random.randint(100,1000);
-e=random.randint(3,51);
-n=p*q;
+
+n=p*q; #n: modulus for the public key and the private keys
+phiN=(p-1)*(q-1); #ϕ(n):
+k=gcd.genCoprime(phiN,True);
+
 def rsaEncrypt(m,e,n):
-    powerMessage=math.pow(m,e);
-    ciphertext=powerMessage%n;
-    return ciphertext;
+    """
+    assumes m is a message integer
+    assumes n is the product of p and q, two large prime numbers
+    assumes e is
+    """
+    raise NotImplemented('not implemented');
 
 def rsaDecrypt(ciphertext):
-    pass;
+    """
+    assumes ciphertext is encrypted with rsa
+    """
+    raise NotImplemented('not implemented');
 
-print(rsaEncrypt(m,e,n));
+#algorithms to break RSA
