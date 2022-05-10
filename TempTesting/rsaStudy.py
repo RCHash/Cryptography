@@ -4,21 +4,17 @@
 #Key exchange: It securely transports a secret key used for encrypted communication.
 
 #procedure for key generation
-#1-Choose two different large random prime numbers p and q
-#2-Calculate n = p*q
-#3-n is the modulus for the public key and the private keys
-#4-Calculate  ϕ ( n ) = ( p − 1 )*( q − 1 )
-#5-Choose an integer k such that 1 < k  < ϕ ( n ) and k is co-prime to ϕ ( n ) : k and ϕ ( n )  share no factors other than 1; gcd (k, ϕ ( n ))= 1.
-#6-k is released as the public key exponent
-#7-Compute d  to satisfy the  d k ≡ 1 ( mod ϕ ( n ) )  i.e.: d k = 1 + x ϕ ( n ) for some integer x
-#8-d is kept as the private key exponent
+#1-Choose two different large random prime numbers p and q - OK
+#2-Calculate n = p*q - OK
+#3-n is the modulus for the public key and the private keys - OK
+#4-Calculate  ϕ ( n ) = ( p − 1 )*( q − 1 ) - OK
+#5-Choose an integer k such that 1 < k  < ϕ ( n ) and k is co-prime to ϕ ( n ) - OK
+#6-k is released as the public key exponent - OK
+#7-Compute d  to satisfy the  d k ≡ 1 ( mod ϕ ( n ) )  i.e.: d k = 1 + x ϕ ( n ) for some integer x - INVESTIGATE
+#8-d is kept as the private key exponent - OK
+#INVESTIGATE STEP 7
 
 import gcd;
-
-message="secret message";
-m="";
-for character in message:
-    m=m+str(ord(character));
 
 n=p*q; #n: modulus for the public key and the private keys
 phiN=(p-1)*(q-1); #ϕ(n):
@@ -38,4 +34,7 @@ def rsaDecrypt(ciphertext):
     """
     raise NotImplemented('not implemented');
 
+message="secret message";
+
 #algorithms to break RSA
+#FERMAT
