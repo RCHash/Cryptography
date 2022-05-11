@@ -10,15 +10,22 @@
 #4-Calculate  ϕ ( n ) = ( p − 1 )*( q − 1 ) - OK
 #5-Choose an integer k such that 1 < k  < ϕ ( n ) and k is co-prime to ϕ ( n ) - OK
 #6-k is released as the public key exponent - OK
-#7-Compute d  to satisfy the  d k ≡ 1 ( mod ϕ ( n ) )  i.e.: d k = 1 + x ϕ ( n ) for some integer x - INVESTIGATE
+#7-Compute d  to satisfy the  d*k ≡ 1 ( mod ϕ ( n ) )  i.e.: d*k = 1 + x * ϕ( n ) for some integer x
+# that is, d = x * ϕ( n ) / k for the smallest x - OK
 #8-d is kept as the private key exponent - OK
 #INVESTIGATE STEP 7
 
 import gcd;
 
-n=p*q; #n: modulus for the public key and the private keys
-phiN=(p-1)*(q-1); #ϕ(n):
-k=gcd.genCoprime(phiN,True);
+def dCalc(phiN,k):
+    """
+    calculates the secret key d
+    """
+    testVar=phiN+1;
+    while (testVar%k!=0):
+        testVar+=phiN;
+    d=testVar;
+    return d
 
 def rsaEncrypt(m,e,n):
     """
@@ -35,6 +42,15 @@ def rsaDecrypt(ciphertext):
     raise NotImplemented('not implemented');
 
 message="secret message";
+
+p=gcd.genRandomPrime(2);
+q=gcd.genRandomPrime(2);
+n=p*q; #n: modulus for the public key and the private keys
+phiN=(p-1)*(q-1); #ϕ(n):
+k=gcd.genCoprime(phiN,True);
+d=dCalc(phiN,k);
+print("p=",str(p),"q=",str(q));
+print("pk=",str(k),"sk=",str(d));
 
 #algorithms to break RSA
 #FERMAT

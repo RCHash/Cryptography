@@ -24,5 +24,23 @@ def genCoprime(phiN,rand=False):
     else:
         return kl;
 
-a=genCoprime(341,True);
-print(a);
+def isPrime(number):
+    """
+    assumes number is a positive integer
+    returns whether a number is prime or not
+    """
+    prime=True;
+    for n in range(2,int(number**0.5)+1,1):
+        if number%n==0:
+            prime=False;
+            break;
+    return prime;
+
+def genRandomPrime(size):
+    """
+    returns a random prime of size number of digits
+    """
+    testNumber=random.randint(10**size,10**(size+1));
+    while (not isPrime(testNumber)):
+        testNumber=random.randint(10**size,10**(size+1));
+    return testNumber;
