@@ -44,3 +44,44 @@ def genRandomPrime(size):
     while (not isPrime(testNumber)):
         testNumber=random.randint(10**size,10**(size+1));
     return testNumber;
+
+def isPrimeDynProg(number,filePath):
+    """
+    assumes number is a positive integer
+    assumes filePath is the file path to the database of primenumbers
+     with each row containing one prime number
+    returns whether a number is prime or not
+    """
+    #check for number's being prime
+    prime=True;
+    for num in primes:
+        if number&num==0:
+            prime=False;
+    return prime;
+
+def genPrimes(topNumber,filePath):
+    """
+    assumes topNumber is a positive integer
+    assumes filePath is the file path to the database of primenumbers
+     with each row containing one prime number
+    updataes the primes file with primes up to topNumber
+    returns the updated list of primes
+    """
+    #loads primes
+    inFile=open(filePath,'r');
+    #load a list of primes
+    primes=[];
+    for line in inFile:
+        primes.append(int(line));
+    inFile.close();
+    #generates primes, if necessary
+    counter=0;
+    if primes[-1]<topNumber:
+        for num in range(primes[-1]+1,topNumber+1,1):
+            if isPrime(num):
+                primes.append(num);
+                counter+=1;
+    #if there are new primes, update the primes database
+    if counter>0:
+        pass;
+    return primes;
