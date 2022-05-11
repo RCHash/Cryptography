@@ -1,5 +1,7 @@
 import random;
 
+FILEPATH="/home/user/Documents/Dev/TempTesting/primes.txt";
+
 def gcd(a, b):
     """
     a, b: two positive integers
@@ -38,6 +40,7 @@ def isPrime(number):
 
 def genRandomPrime(size):
     """
+    assumes size is a positive integer
     returns a random prime of size number of digits
     """
     testNumber=random.randint(10**size,10**(size+1));
@@ -45,13 +48,26 @@ def genRandomPrime(size):
         testNumber=random.randint(10**size,10**(size+1));
     return testNumber;
 
-def isPrimeDynProg(number,filePath):
+def genRandomPrimeDynProg(size,filePath=FILEPATH):
+    """
+    assumes size is a positive integer
+    assumes filePath is the file path to the database of primenumbers
+     with each row containing one prime number
+    returns a random prime of size number of digits using dynamic programming
+    """
+    raise NotImplemented('not yet implemented');
+    #check whether the range is within the mapped primes
+    #if not, check whether it is prime
+
+def isPrimeDynProg(number,filePath=FILEPATH):
     """
     assumes number is a positive integer
     assumes filePath is the file path to the database of primenumbers
      with each row containing one prime number
     returns whether a number is prime or not
     """
+    #get the prime list
+    primes=genPrimes(int(number**0.5),filePath=FILEPATH);
     #check for number's being prime
     prime=True;
     for num in primes:
@@ -59,7 +75,7 @@ def isPrimeDynProg(number,filePath):
             prime=False;
     return prime;
 
-def genPrimes(topNumber,filePath):
+def genPrimes(topNumber,filePath=FILEPATH):
     """
     assumes topNumber is a positive integer
     assumes filePath is the file path to the database of primenumbers
@@ -77,14 +93,22 @@ def genPrimes(topNumber,filePath):
     #stores the number of primes
     numPrimes=len(primes);
     #generates primes, if necessary
-    if primes[-1]<topNumber:
+    if numPrimes==0:
+        for num in range(2,topNumber+1,1):
+            if isPrime(num):
+                primes.append(num);
+    elif primes[-1]<topNumber+1:
         for num in range(primes[-1]+1,topNumber+1,1):
             if isPrime(num):
                 primes.append(num);
     #if there are new primes, update the primes database
     if numPrimes<len(primes):
-        inFile=open(filePath,'w');
-        for i in range(numPrimes,len(primes)+1,1):
-            inFile.write(primes[i]);
+        inFile=open(filePath,'a');
+        for i in range(numPrimes,len(primes),1):
+            inFile.write(str(primes[i])+"\n");
         inFile.close();
     return primes;
+ 
+if __name__=="__main__":
+    # print(isPrimeDynProg(4000000000));
+    pass;
