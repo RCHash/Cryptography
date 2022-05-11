@@ -15,7 +15,7 @@
 #8-d is kept as the private key exponent - OK
 #INVESTIGATE STEP 7
 
-import gcd;
+import primes;
 
 def dCalc(phiN,k):
     """
@@ -43,11 +43,11 @@ def rsaDecrypt(ciphertext):
 
 message="secret message";
 
-p=gcd.genRandomPrime(2);
-q=gcd.genRandomPrime(2);
+p=primes.genRandomPrime(2);
+q=primes.genRandomPrime(2);
 n=p*q; #n: modulus for the public key and the private keys
 phiN=(p-1)*(q-1); #ϕ(n):
-k=gcd.genCoprime(phiN,True);
+k=primes.genCoprime(phiN,True);
 d=dCalc(phiN,k);
 print("p=",str(p),"q=",str(q));
 print("pk=",str(k),"sk=",str(d));
