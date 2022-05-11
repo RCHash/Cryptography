@@ -4,7 +4,7 @@ FILEPATH="/home/user/Documents/Dev/TempTesting/primes.txt";
 
 def gcd(a, b):
     """
-    a, b: two positive integers
+    assumes a and b as two positive integers
     Returns the greatest common divisor of a and b
     """
     if max(a,b)%min(a,b)==0:
