@@ -74,14 +74,17 @@ def genPrimes(topNumber,filePath):
     for line in inFile:
         primes.append(int(line));
     inFile.close();
+    #stores the number of primes
+    numPrimes=len(primes);
     #generates primes, if necessary
-    counter=0;
     if primes[-1]<topNumber:
         for num in range(primes[-1]+1,topNumber+1,1):
             if isPrime(num):
                 primes.append(num);
-                counter+=1;
     #if there are new primes, update the primes database
-    if counter>0:
-        pass;
+    if numPrimes<len(primes):
+        inFile=open(filePath,'w');
+        for i in range(numPrimes,len(primes)+1,1):
+            inFile.write(primes[i]);
+        inFile.close();
     return primes;
