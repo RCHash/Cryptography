@@ -13,7 +13,8 @@
 #7-Compute d  to satisfy the  d*k ≡ 1 ( mod ϕ ( n ) )  i.e.: d*k = 1 + x * ϕ( n ) for some integer x
 # that is, d = x * ϕ( n ) / k for the smallest x - OK
 #8-d is kept as the private key exponent - OK
-#INVESTIGATE STEP 7
+
+#INVESTIGATE ENCRYPTION AND DECRYPTION
 
 import primes;
 
