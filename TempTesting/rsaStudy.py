@@ -17,7 +17,7 @@
 
 import primes;
 
-def dCalc(phiN,k):
+def dCalc(phiN: int, k: int) -> int:
     """
     calculates the secret key d
     """
@@ -25,9 +25,9 @@ def dCalc(phiN,k):
     while (testVar%k!=0):
         testVar+=phiN;
     d=testVar;
-    return d
+    return d;
 
-def rsaEncrypt(m,e,n):
+def rsaEncrypt(plaintext: str, e, n: int):
     """
     assumes m is a message integer
     assumes n is the product of p and q, two large prime numbers
@@ -35,7 +35,7 @@ def rsaEncrypt(m,e,n):
     """
     raise NotImplemented('not implemented');
 
-def rsaDecrypt(ciphertext):
+def rsaDecrypt(ciphertext: str) -> str:
     """
     assumes ciphertext is encrypted with rsa
     """
