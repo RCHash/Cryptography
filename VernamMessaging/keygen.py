@@ -2,7 +2,7 @@ from os import urandom;
 from hashlib import sha256;
 
 #generates a pseudorandom key of length kLength with an optional seed
-def keygen(kLength,BLOCKSIZE, seed="", randomness=True):
+def keygen(kLength: int, BLOCKSIZE: int, seed: str="", randomness: bool=True):
     """Generates a pseudorandom key of length kLength
     Uses a nonce to increase the output of the key to the required length
     -Assumes kLength is an integer>0

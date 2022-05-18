@@ -1,5 +1,5 @@
 #converts a string into a binary of 8 bits
-def string2binary(string):
+def string2binary(string: str):
     """Takes a String as input.
     Returns a list of 8-bit binaries of the ASCII value for each letter in the string."""
     #returns a list of binaries of the ASCII value for each letter in the string
@@ -16,7 +16,7 @@ def xorbinaries(binary1,binary2):
     return [bin(int(binary1[bit],2)^int(binary2[bit],2))[2:].zfill(8) for bit in range(0,min(len(binary1),len(binary2)),1)];
 
 #converts binaries to strings
-def binary2string(binary):
+def binary2string(binary) -> str:
     """Takes a binary as input. Returns its equivalent binary."""
     #the chr function transforms an int into its correspondent ASCII character
     #the int function transforms a number form a base into an int in base 10 (in the case of binaries, base 2)

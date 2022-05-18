@@ -1,7 +1,7 @@
 from os.path import exists;
 
 #returns the information from within the file
-def getfileinfo(file):
+def getfileinfo(file: str) -> str:
     """Takes a file path as an input. Returns its content as a string."""
     #checks whether the file exists
     if not exists(file):
@@ -26,7 +26,7 @@ def getfileinfo(file):
         return buf;
 
 #writes on a new file
-def writeinfile(info,filename):
+def writeinfile(info: str,filename: str) -> bool:
     """Creates a file with the information given in it. It assumes that there is no file with the same name in the same path.
     -Takes the information to be written as a string.
     -Takes the file path and name as a string
@@ -49,7 +49,7 @@ def writeinfile(info,filename):
         return True;
 
 #writes information in a new file
-def writefileinfo(info,originalfile,ftype):
+def writefileinfo(info: str, originalfile: str, ftype: str) -> bool:
     """Creates a new file with the information given in it. Makes sure not to overwrite a previously existing file.
     -Takes information to be written in a new file as a string.
     -Takes the original file path and name as a string.

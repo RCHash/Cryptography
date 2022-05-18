@@ -5,7 +5,7 @@ from XORsupport import string2binary, xorbinaries, binary2string;
 BLOCKSIZE=65536;
 
 #Encrypts using the Vernam Cipher
-def vernam_encrypt(plaintext):
+def vernam_encrypt(plaintext: str) -> dict:
     """ Converts a plaintext to a ciphertext, adding a random key of the same size.
     -Takes a string as an input
     -Returns a dictionary with two keys: ciphertext and key"""
@@ -28,7 +28,7 @@ def vernam_encrypt(plaintext):
 
 #Encrypts using the Vernam Cipher
 #FIX THIS
-def vernam_decrypt(ciphertext,key,plaintextfileoutputname=None):
+def vernam_decrypt(ciphertext: str, key: str, plaintextfileoutputname: str=None):
     """ Converts a ciphertext and its key into the original plainetxt.
     -Takes two strings of the same size as input
     -Returns a plaintext string"""

@@ -12,7 +12,7 @@ from filemanipulation import getfileinfo, writeinfile, writefileinfo
 from Cipher import vernam_encrypt, vernam_decrypt
 
 #main function
-def main(basefile=None,keyfile=None):
+def main(basefile: str=None,keyfile: str=None):
     if basefile==None and keyfile==None:
         string=str(input("Please provide a string as an input: "));
         result=vernam_encrypt(string);
