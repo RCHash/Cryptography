@@ -1,4 +1,4 @@
-def RotDecrypt(ciphertext,wordListFileName):
+def RotDecrypt(ciphertext: str,wordListFileName: str):
     """
     Assumes the ciphertext is a string
     Breaks the cryptography if it is a simple rotation cipher
@@ -35,7 +35,7 @@ def RotDecrypt(ciphertext,wordListFileName):
     else:
         return None;
 
-def wordSeparator(text): #MISSING IMPLEMENTATION
+def wordSeparator(text: str): #MISSING IMPLEMENTATION
     """
     Assumes text is a string
     Separates the text into words
@@ -71,7 +71,7 @@ def wordSeparator(text): #MISSING IMPLEMENTATION
             word="";
     return words;
 
-def loadWords(wordListFileName):
+def loadWords(wordListFileName: str) -> list:
     """
     Assumes wordlist filename is a valid textfile with all words in the
      same row, each separated by a single space
@@ -92,7 +92,7 @@ def loadWords(wordListFileName):
     print("  ", len(wordList), "words loaded.");
     return wordList;
 
-def isValidWord(word, wordList):
+def isValidWord(word: str, wordList: list) -> bool:
     """
     Assumes word is a string
     Assumes wordList is a list of strings
@@ -106,7 +106,7 @@ def isValidWord(word, wordList):
     else:
         return False;
 
-def letterShifter(letter,shift):
+def letterShifter(letter: str, shift: int) -> str:
     """
     Assumes letter is a single alphabetic digit in unicode
     Assumes is an integer and 0<=shift<=26
