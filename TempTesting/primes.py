@@ -2,7 +2,7 @@ import random;
 
 FILEPATH="/home/user/Documents/Dev/TempTesting/primes.txt";
 
-def gcd(a, b):
+def gcd(a: int, b: int) -> int:
     """
     assumes a and b as two positive integers
     Returns the greatest common divisor of a and b
@@ -12,7 +12,7 @@ def gcd(a, b):
     else:
         return gcd(min(a,b),max(a,b)%min(a,b));
 
-def genCoprime(phiN,rand=False):
+def genCoprime(phiN: int,rand: bool=False) -> list:
     """
     assumes phiN is a positive integer
     returns the set of numbers k from 2 to phiN-1 such that k and phiN are coprimes
@@ -26,7 +26,7 @@ def genCoprime(phiN,rand=False):
     else:
         return kl;
 
-def isPrime(number):
+def isPrime(number: int) -> bool:
     """
     assumes number is a positive integer
     returns whether a number is prime or not
@@ -38,7 +38,7 @@ def isPrime(number):
             break;
     return prime;
 
-def genRandomPrime(size):
+def genRandomPrime(size: int) -> int:
     """
     assumes size is a positive integer
     returns a random prime of size number of digits
@@ -48,7 +48,7 @@ def genRandomPrime(size):
         testNumber=random.randint(10**size,10**(size+1));
     return testNumber;
 
-def genRandomPrimeDynProg(size,filePath=FILEPATH):
+def genRandomPrimeDynProg(size: int,filePath: str=FILEPATH) -> int:
     """
     assumes size is a positive integer
     assumes filePath is the file path to the database of primenumbers
@@ -59,7 +59,7 @@ def genRandomPrimeDynProg(size,filePath=FILEPATH):
     #check whether the range is within the mapped primes
     #if not, check whether it is prime
 
-def isPrimeDynProg(number,filePath=FILEPATH):
+def isPrimeDynProg(number:int,filePath: str=FILEPATH) -> bool:
     """
     assumes number is a positive integer
     assumes filePath is the file path to the database of primenumbers
@@ -75,7 +75,7 @@ def isPrimeDynProg(number,filePath=FILEPATH):
             prime=False;
     return prime;
 
-def genPrimes(topNumber,filePath=FILEPATH):
+def genPrimes(topNumber: int,filePath: str=FILEPATH) -> list:
     """
     assumes topNumber is a positive integer
     assumes filePath is the file path to the database of primenumbers
