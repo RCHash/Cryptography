@@ -21,12 +21,12 @@ def keygen(kLength: int, BLOCKSIZE: int, seed: str="", randomness: bool=True):
         #hexdigest is a method that returns the data converted to hexadecimal (the first two characters returned are an indication of a hexadecimal number)
         #int converts the hexadecimal from base 16 to base 10
         if (randomness==True):
-            randomdata=str(urandom(BLOCKSIZE)).encode('utf-8');
+            random_data=str(urandom(BLOCKSIZE)).encode('utf-8');
         else:
-            randomdata="".encode('utf-8');
-        rawdata=randomdata+(str(seed)+str(nonce)).encode('utf-8');
-        hashfunction=sha256(rawdata);
-        key=hashfunction.hexdigest()[2:];
+            random_data="".encode('utf-8');
+        raw_data=random_data+(str(seed)+str(nonce)).encode('utf-8');
+        hash_function=sha256(raw_data);
+        key=hash_function.hexdigest()[2:];
         nonce+=1;
     #truncate the key to have the desired length
     fkey=''.join(key[k] for k in range(kLength));

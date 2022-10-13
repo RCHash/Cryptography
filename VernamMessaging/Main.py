@@ -7,8 +7,8 @@
 
 from sys import argv;
 from os.path import exists;
-from XORsupport import string2binary, xorbinaries, binary2string
-from filemanipulation import getfileinfo, writeinfile, writefileinfo
+from XORsupport import string_2_binary, xor_binaries, binary_2_string
+from filemanipulation import get_file_info, write_in_file, write_file_info
 from Cipher import vernam_encrypt, vernam_decrypt
 
 #main function
@@ -21,19 +21,20 @@ def main(basefile: str=None,keyfile: str=None):
     elif basefile==None or keyfile==None:
         #file input
         if keyfile==None:
-            buf=getfileinfo(basefile);
+            buf=get_file_info(basefile);
         if basefile==None:
-            buf=getfileinfo(keyfile);
+            buf=get_file_info(keyfile);
         #encrypts the file's information
         result=vernam_encrypt(buf);
         print(result);
     else:
         #CHECK THIS
-        buf1=getfileinfo(basefile);
-        buf2=getfileinfo(basefile);
+        buf1=get_file_info(basefile);
+        buf2=get_file_info(basefile);
         #decrypts the files' information
         result=vernam_decrypt(buf1,buf2);
         print(result);
+
 
 #call main function
 if __name__ == '__main__':
