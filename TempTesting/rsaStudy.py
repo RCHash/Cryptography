@@ -65,4 +65,5 @@ print("pk=",str(k),"sk=",str(d));
 #algorithms to break RSA
 #FERMAT
 
-#python cryptography libraries to use?
+#python cryptography libraries to use? investigate:
+#- Crypto
