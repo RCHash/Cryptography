@@ -51,5 +51,16 @@ d=dCalc(phiN,k);
 print("p=",str(p),"q=",str(q));
 print("pk=",str(k),"sk=",str(d));
 
+#encryption takes place by:
+#1- convert a plaintext message M to a number (usually with base64)
+#2- add a padding to M by processing pad(num(M)), preferably OAEP,
+# but PKCS#1 v1.5 should suffice for not very secure applciations
+#2- calculate pad(num(M))^d mod n = C, where C is the ciphertext
+
+#decryption takes place by:
+#1- calculate C^k mod n = pad(num(M));
+#2- remove the padding by unpadding unpad(pad(num(M))) = num(M);
+#3- convert the number back into a message M
+
 #algorithms to break RSA
 #FERMAT
