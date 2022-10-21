@@ -55,7 +55,7 @@ print("pk=",str(k),"sk=",str(d));
 #1- convert a plaintext message M to a number (usually with base64)
 #2- add a padding to M by processing pad(num(M)), preferably OAEP,
 # but PKCS#1 v1.5 should suffice for not very secure applciations
-#2- calculate pad(num(M))^d mod n = C, where C is the ciphertext
+#3- calculate pad(num(M))^d mod n = C, where C is the ciphertext
 
 #decryption takes place by:
 #1- calculate C^k mod n = pad(num(M));
