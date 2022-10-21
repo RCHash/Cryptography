@@ -4,17 +4,15 @@
 #Key exchange: It securely transports a secret key used for encrypted communication.
 
 #procedure for key generation
-#1-Choose two different large random prime numbers p and q - OK
-#2-Calculate n = p*q - OK
-#3-n is the modulus for the public key and the private keys - OK
-#4-Calculate  ϕ ( n ) = ( p − 1 )*( q − 1 ) - OK
-#5-Choose an integer k such that 1 < k  < ϕ ( n ) and k is co-prime to ϕ ( n ) - OK
-#6-k is released as the public key exponent - OK
-#7-Compute d  to satisfy the  d*k ≡ 1 ( mod ϕ ( n ) )  i.e.: d*k = 1 + x * ϕ( n ) for some integer x
-# that is, d = x * ϕ( n ) / k for the smallest x - OK
-#8-d is kept as the private key exponent - OK
-
-#INVESTIGATE ENCRYPTION AND DECRYPTION
+#1-Choose two different large random prime numbers p and q
+#2-Calculate n = p*q
+#3-n is the modulus for the public key and the private keys
+#4-Calculate  ϕ ( n ) = ( p − 1 )*( q − 1 ) for the special case of prime numbers p and q
+#5-Choose an integer k such that 1 < k < ϕ ( n ) and k is co-prime to ϕ ( n )
+#6-k is released as the public key exponent and together with n becomes the public key
+#7-Compute d to satisfy the  d*k mod ϕ ( n ) = 1  i.e.: d*k = 1 + x * ϕ( n ) for some integer x
+# that is, d = x * ϕ( n ) / k for the smallest x
+#8-d is kept as the private key exponent
 
 import primes;
 
